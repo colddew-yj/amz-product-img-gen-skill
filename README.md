@@ -2,6 +2,10 @@
 
 基于 wan2.7-image 的 Amazon 商品图生成 Skill（main/scene/detail/A+），核心是“严格提示词规则 + 参考图一致性 + 文案唯一文本规则”。
 
+### Source Project
+
+本 skill 来源项目（完整功能实现与可视化界面）：https://github.com/colddew-yj/amz-product-img-gen
+
 ### Files
 
 - `SKILL.md`：主 Skill 文档（输入逻辑、提示词模板、调用方式）
