@@ -36,6 +36,70 @@ cp -R ./* ~/.trae/skills/amazon-product-image-wan27/
 Use Skill: amazon-product-image-wan27
 ```
 
+##### Agent 会话示例（可直接复制改写）
+
+```
+Use Skill: amazon-product-image-wan27
+
+ProductInfo:
+  name: "Stainless Steel Insulated Tumbler"
+  category: "Tumbler"
+  material: "304 stainless steel"
+  dimensions: "20oz"
+  useCase: "commuting, office, gym"
+  targetAudience: "men and women, 18-45"
+
+StyleProfile: minimal_modern
+
+References:
+  - file: /path/to/ref1.png
+
+Generate:
+  main:
+    count: 1
+    size: "1600*1600"
+  scene:
+    count: 2
+    size: "1600*1600"
+    copy:
+      - "Keeps drinks cold for 24 hours"
+      - "Leak-proof lid"
+  detail:
+    count: 1
+    size: "1600*1600"
+    copy:
+      - "Double-wall vacuum"
+  aplus:
+    count: 1
+    size: "1200*600"
+    copy:
+      - "Built for every day"
+```
+
+##### 用户可输入的选项（字段说明）
+
+- `ProductInfo`（建议填写）
+  - `name`（必填）
+  - `category`（可选）
+  - `material`（可选）
+  - `dimensions`（可选）
+  - `useCase`（可选）
+  - `targetAudience`（可选）
+- `StyleProfile`（可选，默认 minimal_modern）
+  - `minimal_modern`
+  - `japanese_soft`
+  - `luxury_editorial`
+- `References`（必填，1–3 个）
+  - `file: /abs/or/relative/path.png`
+  - `url: https://...`（公网 https 链接）
+  - `oss: oss://...`（已上传的 OSS 链接）
+- `Generate`（必填，至少一种）
+  - `main | scene | detail | aplus`
+  - 每种类型支持：
+    - `count`：生成张数
+    - `size`：分辨率，如 `"1600*1600"`、`"1K"`、`"2K"`，A+ 常用 `"1200*600"`
+    - `copy`（可选，仅 scene/detail/aplus）：字符串数组，长度建议与 `count` 一致；每条必须单行且严格逐字一致（图片中只允许出现这一条文本且只出现一次）
+
 然后提供以下信息（越完整越稳定）：
 
 - ProductInfo：name / category / material / dimensions / useCase / targetAudience
