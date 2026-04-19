@@ -45,7 +45,7 @@ description: Use when generating Amazon listing images (main/scene/detail/A+) fr
 
 - 类目（category）、材质（material）、尺寸（dimensions）
 - 使用场景（useCase）、目标人群（targetAudience）
-- 风格档案（style profile）：`minimal_modern`（现代简约） / `japanese_soft`（日系柔和） / `luxury_editorial`（轻奢质感）
+- 风格档案（style profile）：`minimal_modern`（现代简约） / `japanese_soft`（日系柔和） / `luxury_editorial`（轻奢质感）/ `rounded_bold`（圆润大粗体）/ `yahoma_light`（雅黑light）
 
 当用户未提供 `dimensions` 时，必须在场景图/A+图里明确要求"真实世界尺寸与比例"，并用环境物体做比例参照，避免产品被生成成不符合常识的大小。
 
@@ -562,12 +562,16 @@ TEXT OVERLAY (if {COPY} provided):
 - `minimal_modern`：现代几何无衬线、瑞士现代风格、克制、可读性优先
 - `japanese_soft`：柔和手写/圆润无衬线、温柔、轻量
 - `luxury_editorial`：高对比现代衬线、编辑感、克制但高级
+- `rounded_bold`：圆润大粗体、可爱友好、粗壮饱满
+- `yahoma_light`：雅黑light、纤细轻量、现代简洁
 
 当 `{COPY}` 非空时，先确定你需要的文字风格：
 
 - 需要艺术体/更有设计感：优先 `japanese_soft`
 - 需要高级编辑感：优先 `luxury_editorial`
 - 需要干净现代电商感：优先 `minimal_modern`
+- 需要更突出的视觉效果：优先 `rounded_bold`
+- 需要更清楚的文字感或文艺感：优先 `yahoma_light`
 
 艺术体通常更容易出现错字或自动换行，优先用更短的文案，并用“文案稳定性加固”规则做验收与重试。
 
@@ -727,7 +731,7 @@ python3 scripts/style_mapper.py
   - detail 1 张（无文案）
   - aplus 1 张（有文案："Bring Nature Home"）
   - dimension 1 张（尺寸标注图）
-  - fusion 1 张（多SKU变体融合：[IMG-001红] + [IMG-002蓝] + [IMG-003绿]，场景：客厅）
+    - 子级 fusion 1 张（多SKU变体融合：[IMG-001红] + [IMG-002蓝] + [IMG-003绿]，场景：客厅）
 - 风格档案：minimal_modern
 - CopyMode：strict
 
@@ -748,7 +752,7 @@ IMG-006 | aplus | 1464*600 | scene: Living Room (preset #9) | copy: Bring Nature
 
 IMG-007 | dimension | 1600*1600 | prompt: Based on the reference image showing Ceramic Matte Glaze Plant Pot... [with dimension annotation rules], image_url: https://dashscope-7c2c.oss-accelerate.aliyuncs.com/ddd.png?Expires=1776616034&OSSAccessKeyId=xxx&Signature=xxx
 
-IMG-F001 | fusion | 1600*1600 | scene: Living Room (#9) | copy: Bring Nature Home | refs: [IMG-001, IMG-002, IMG-003] | prompt: Multi-product fusion composition... [with unified text overlay], image_url: https://dashscope-7c2c.oss-accelerate.aliyuncs.com/fff.png?Expires=1776616034&OSSAccessKeyId=xxx&Signature=xxx
+IMG-F001 | fusion | scene: Living Room (#9) | copy: Bring Nature Home | refs: [IMG-001, IMG-002, IMG-003] | prompt: Multi-product fusion composition... [with unified text overlay], image_url: https://dashscope-7c2c.oss-accelerate.aliyuncs.com/fff.png?Expires=1776616034&OSSAccessKeyId=xxx&Signature=xxx
 ```
 
 执行步骤：
