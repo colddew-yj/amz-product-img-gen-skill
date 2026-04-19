@@ -643,6 +643,51 @@ python3 ~/.trae/skills/wan2.7-image-skill/scripts/image-generation-editing.py \
 IMG-001 | {type} | {size} | prompt: ... | image_url: https://...
 ```
 
+## 高级功能与脚本支持
+
+### 增强脚本
+
+本技能提供了一系列增强脚本，位于 `scripts/` 目录，用于提升生成效果和用户体验：
+
+#### 1. 多语言支持与风格映射
+- **`scripts/style_mapper.py`**：支持中文、法语、日语到英文风格档案的自动映射
+- **`scripts/enhancer.py`**：自动检测输入语言并应用相应的提示词模板
+
+#### 2. 提示词优化
+- **`scripts/prompt_optimizer.py`**：压缩长提示词，缓存优化结果，提升生成速度
+
+#### 3. 批量编辑功能
+- **`scripts/batch_editor.py`**：支持批量编辑多张图片，管理编辑历史，支持版本回溯
+
+### 使用方法
+
+#### 方式 1：通过对话调用（推荐）
+
+在支持 Skills 的对话/Agent 里，直接输入：
+
+```
+Use Skill: amazon-product-image-wan27
+
+# 高级选项（可选）
+AdvancedOptions:
+  language: zh  # 自动检测或手动指定
+  enable_caching: true  # 启用提示词缓存
+  batch_edit: true  # 启用批量编辑模式
+```
+
+#### 方式 2：直接使用脚本
+
+```bash
+# 优化提示词
+python3 scripts/prompt_optimizer.py
+
+# 批量编辑图片
+python3 scripts/batch_editor.py
+
+# 风格映射
+python3 scripts/style_mapper.py
+```
+
 ## Common Mistakes
 
 - 主图出现道具/场景/文字：主图必须白底且无任何文字元素
