@@ -660,8 +660,8 @@ IMG-001 | {type} | {size} | prompt: ... | image_url: https://...
 #### 2. 提示词优化
 - **`scripts/prompt_optimizer.py`**：压缩长提示词，缓存优化结果，提升生成速度
 
-#### 3. 批量编辑功能
-- **`scripts/batch_editor.py`**：支持批量编辑多张图片，管理编辑历史，支持版本回溯
+#### 3. 提示词优化
+- **`scripts/prompt_optimizer.py`**：压缩长提示词，缓存优化结果，提升生成速度
 
 ### 使用方法
 
@@ -684,9 +684,6 @@ AdvancedOptions:
 ```bash
 # 优化提示词
 python3 scripts/prompt_optimizer.py
-
-# 批量编辑图片
-python3 scripts/batch_editor.py
 
 # 风格映射
 python3 scripts/style_mapper.py
