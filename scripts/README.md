@@ -1,6 +1,6 @@
 # Amazon Product Image Enhancement Scripts
 
-This directory contains scripts to enhance the functionality of the `amazon-product-image-wan27` skill, providing advanced features like multi-language support, style mapping, prompt optimization, and batch image editing.
+This directory contains scripts to enhance the functionality of the `amazon-product-image-wan27` skill, providing advanced features like multi-language support, style mapping, and prompt optimization.
 
 ## Scripts Overview
 
@@ -90,35 +90,6 @@ optimized_prompts = optimizer.batch_optimize_prompts(prompts, images)
 optimizer.clear_cache()
 ```
 
-### 4. `batch_editor.py`
-
-**Purpose**: Provides batch editing functionality for multiple images and maintains edit history.
-
-**Key Features**:
-- Batch editing of multiple images
-- Edit history tracking
-- Version control and reverting
-- Automatic edit instruction generation
-
-**Usage**:
-```python
-from scripts.batch_editor import BatchImageEditor
-
-editor = BatchImageEditor()
-
-# Batch edit images
-results = editor.batch_edit(["IMG-001", "IMG-002"], "Move text to top-left")
-
-# Get edit history
-history = editor.get_edit_history("IMG-001")
-
-# Revert to a previous version
-revert_result = editor.revert_to_version("IMG-001-EDIT-1")
-
-# Generate edit instructions
-instruction = editor.generate_edit_instructions("tumbler", "Change text to 'Keep cool'")
-```
-
 ## Installation
 
 1. Ensure Python 3.7+ is installed
@@ -154,11 +125,6 @@ These scripts can be integrated into the SKILL.md file by adding the following s
 - 自动检测文案渲染质量
 - 识别并标记错字和排版问题
 - 提供重生成建议
-
-### 编辑历史管理
-- 跟踪所有图片编辑历史
-- 支持版本回溯和比较
-- 批量应用相同编辑到多张图片
 ```
 
 ## Testing
@@ -174,9 +140,6 @@ python3 scripts/style_mapper.py
 
 # Test prompt_optimizer.py
 python3 scripts/prompt_optimizer.py
-
-# Test batch_editor.py
-python3 scripts/batch_editor.py
 ```
 
 ## Troubleshooting
@@ -186,7 +149,6 @@ python3 scripts/batch_editor.py
 1. **Cache not working**: Ensure the `cache` directory has write permissions
 2. **Language detection incorrect**: Check that the input text contains language-specific characters
 3. **Style mapping not found**: Verify that the style term exists in the mapping table
-4. **Batch editing fails**: Ensure image IDs are in the correct format (e.g., IMG-001)
 
 ### Logs
 
@@ -203,4 +165,3 @@ logging.basicConfig(level=logging.INFO)
 - Machine learning model for improved style recommendations
 - Support for additional languages and style profiles
 - Web interface for easier script management
-- Integration with cloud storage for persistent edit history
